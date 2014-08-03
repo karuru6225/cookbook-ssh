@@ -29,7 +29,7 @@ template '/etc/ssh/sshd_config' do
 	group 'root'
 	mode '0644'
 	source 'sshd_config.erb'
-	variables(node['openssh']['server'])
+	variables({:settings => node['openssh']['server']})
 	action [:create]
 	notifies :restart, "service[openssh]", :delayed
 end
