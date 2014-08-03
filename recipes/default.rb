@@ -31,4 +31,5 @@ template '/etc/ssh/sshd_config' do
 	source 'sshd_config.erb'
 	variables(node['openssh']['server'])
 	action [:create]
+	notifies :restart, "service[openssh]", :delayed
 end
