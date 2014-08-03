@@ -25,8 +25,8 @@ end
 
 
 template '/etc/ssh/sshd_config' do
-	owner root
-	group root
+	owner 'root'
+	group 'root'
 	mode '0644'
 	source 'sshd_config.erb'
 	variables(node['openssh']['server'])
