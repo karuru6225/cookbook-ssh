@@ -20,5 +20,15 @@ service "openssh" do
 	when "debian"
 		service_name "ssh"
 	end
-	action [:enable, :restart]
+	action [:enable]
+end
+
+
+template '/etc/ssh/sshd_config' do
+	owner root
+	group root
+	mode '0644'
+	source 'sshd_config.erb'
+	variables(node['openssh']['server'])
+	action [:create]
 end
